@@ -1,0 +1,17 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3181
+
+DESCRIPTION
+This filetype plugin provides movement commands and text objects for email
+fortunes, i.e. blocks of text delimited by /^-- \?$/. 
+
+USAGE
+			Move around fortunes: 
+]]			Go to [count] next start of a fortune. 
+][			Go to [count] next end of a fortune. 
+[[			Go to [count] previous start of a fortune. 
+[]			Go to [count] previous end of a fortune. 
+
+if			"inner fortune" text object, select [count] fortunes,
+			excluding the fortune separator. 
+af			"a fortune" text object, select [count] fortunes, including
+			the preceding fortune separator. 
