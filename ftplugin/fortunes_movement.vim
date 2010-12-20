@@ -1,8 +1,7 @@
 " fortunes_movement.vim: Movement over email fortunes with ]] etc. 
 "
 " DEPENDENCIES:
-"   - CountJump.vim, CountJump/Motion.vim, CountJump/TextObjects.vim autoload
-"     scripts.
+"   - CountJump/Region/Motion.vim, CountJump/TextObjects.vim autoload scripts.
 "
 " Copyright: (C) 2009-2010 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'. 
@@ -10,6 +9,11 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS 
+"   1.10.004	18-Dec-2010	Switched definition of motion mappings from
+"				patterns to begin and end to a region of
+"				continguous lines defined by a non-matching
+"				pattern (representing the fortune separator
+"				line). 
 "   1.00.003	03-Aug-2010	ENH: Bracket motions to end also work when
 "				there's no final fortune delimiter. 
 "				FIX: Outer text object must not rely on last
@@ -38,8 +42,7 @@ endif
 " The normal mode ][ mapping should jump to the beginning of the last line, but
 " the operator-pending and visual mode mappings should include the full last
 " line. 
-call CountJump#Motion#MakeBracketMotion('<buffer>', '', '', '^-- \?\n\zs', '^.*\%(\n-- \?$\|\%$\)', 0, 'n')
-call CountJump#Motion#MakeBracketMotion('<buffer>', '', '', '^-- \?\n\zs', '^.*\%(\n\zs-- \?$\|\%$\)', 0, 'ov')
+call CountJump#Region#Motion#MakeBracketMotion('<buffer>', '', '', '^-- \?$', 0) 
 
 "if			"inner fortune" text object, select [count] fortunes,
 "			excluding the fortune separator. 
